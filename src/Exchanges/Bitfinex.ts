@@ -255,7 +255,10 @@ export default class Bitfinex extends AbstractLendingExchange implements Externa
     }
 
     public getBalances() {
-        return this.getBalancesForWallet("exchange")
+        // TODO add a setting to switch between both wallets
+        // the problem is that we have 1 exchange instance for all pairs and a user can trade spot + margin using different coin pairs
+        //return this.getBalancesForWallet("exchange") // exchange/spot wallet
+        return this.getBalancesForWallet("trading") // margin trading wallet
     }
 
     public getMarginAccountSummary() {
